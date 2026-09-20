@@ -1,0 +1,5198 @@
+/* =====================================================
+   RESET
+===================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    color: #551824;
+
+    overflow-x: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 42%,
+            #fffaf0 0%,
+            #f4e5c9 58%,
+            #e5c99d 100%
+        );
+}
+
+
+/* =====================================================
+   OPENING SCREEN
+===================================================== */
+
+.opening-screen {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow-x: hidden;
+
+    overflow-y: auto;
+
+    /*
+       IMPORTANT:
+       Enough breathing room so the rods
+       never touch the laptop/mobile edges.
+    */
+
+    padding:
+        30px 28px;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(255,250,239,.97),
+            rgba(239,220,184,.97)
+        );
+
+    transition:
+        opacity .9s ease,
+        visibility .9s ease;
+}
+
+
+/* =====================================================
+   HIDE OPENING SCREEN AFTER ENTERING SCENE 2
+===================================================== */
+
+.opening-screen.finished {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    display: none !important;
+}
+
+
+/* =====================================================
+   BACKGROUND LIGHT
+===================================================== */
+
+.ambient-glow {
+
+    position: fixed;
+
+    width: 650px;
+
+    height: 650px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(255,226,164,.30),
+            transparent 70%
+        );
+
+    filter: blur(25px);
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   TOP MESSAGE
+===================================================== */
+
+.opening-caption {
+
+    position: absolute;
+
+    top: 16px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    z-index: 10;
+
+    color: #84582f;
+
+    transition:
+        opacity .4s ease;
+}
+
+
+.opening-caption.hidden {
+
+    opacity: 0;
+}
+
+
+.opening-caption p {
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: 5px;
+
+    white-space: nowrap;
+}
+
+
+.opening-caption span {
+
+    color: #ad783e;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   SCROLL WRAPPER
+===================================================== */
+
+.scroll-wrap {
+
+    position: relative;
+
+    width:
+        min(650px, calc(100vw - 70px));
+
+    /*
+       Closed scroll.
+    */
+
+    height: 225px;
+
+    flex-shrink: 0;
+
+    transition:
+
+        width 1s ease,
+
+        height 1.5s
+        cubic-bezier(.77,0,.18,1);
+}
+
+
+/* =====================================================
+   OPENED SCROLL
+
+   KEY FIX:
+   The entire scroll is now guaranteed to fit
+   inside a normal laptop viewport.
+===================================================== */
+
+.scroll-wrap.opened {
+
+    width:
+        min(760px, calc(100vw - 70px));
+
+    height:
+        min(
+            790px,
+            calc(100vh - 60px)
+        );
+}
+
+
+/* =====================================================
+   PARCHMENT
+===================================================== */
+
+.parchment {
+
+    position: absolute;
+
+    top: 25px;
+
+    left: 8px;
+
+    width:
+        calc(100% - 16px);
+
+    height: 175px;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            ellipse at center,
+            rgba(255,255,255,.72),
+            transparent 68%
+        ),
+
+        repeating-linear-gradient(
+            0deg,
+            rgba(122,76,30,.025) 0,
+            rgba(122,76,30,.025) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+
+        linear-gradient(
+            90deg,
+            #e6c88f,
+            #fff4d4 9%,
+            #fffaf0 50%,
+            #f4dfb1 91%,
+            #dbb477
+        );
+
+    border-left:
+        1px solid
+        rgba(133,83,34,.30);
+
+    border-right:
+        1px solid
+        rgba(133,83,34,.30);
+
+    transition:
+
+        height 1.5s
+        cubic-bezier(.77,0,.18,1);
+}
+
+
+/* OPENED PAPER */
+
+.scroll-wrap.opened .parchment {
+
+    height:
+        calc(100% - 48px);
+}
+
+
+/* =====================================================
+   INNER BORDER
+===================================================== */
+
+.parchment::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 15px;
+
+    border:
+        1px solid
+        rgba(153,97,44,.25);
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   PAPER TEXTURE
+===================================================== */
+
+.paper-texture {
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: .35;
+
+    background:
+
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(110,69,28,.07) 0 1px,
+            transparent 2px
+        ),
+
+        radial-gradient(
+            circle at 70% 65%,
+            rgba(110,69,28,.05) 0 1px,
+            transparent 2px
+        );
+
+    background-size:
+        70px 70px,
+        100px 100px;
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   RODS
+===================================================== */
+
+.scroll-rod {
+
+    position: absolute;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 52px;
+
+    z-index: 8;
+
+    border-radius: 50%;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #a86a2b 0%,
+            #d59e50 8%,
+            #f5d899 25%,
+            #fff0bd 50%,
+            #e6bd72 75%,
+            #a9692c 92%,
+            #91551f 100%
+        );
+
+    box-shadow:
+
+        inset 0 5px 6px
+        rgba(255,255,255,.50),
+
+        inset 0 -7px 8px
+        rgba(100,50,15,.18),
+
+        0 7px 16px
+        rgba(70,35,12,.22);
+}
+
+
+.scroll-rod-top {
+
+    top: 0;
+}
+
+
+.scroll-rod-bottom {
+
+    bottom: 0;
+}
+
+
+/* =====================================================
+   ROD CAPS
+
+   Keep caps inside the scroll so they don't
+   get cut by screen edges.
+===================================================== */
+
+.rod-cap {
+
+    position: absolute;
+
+    top: 8px;
+
+    width: 35px;
+
+    height: 35px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle at 35% 30%,
+            #f7da9b,
+            #b8752e 75%
+        );
+
+    box-shadow:
+
+        inset 0 3px 4px
+        rgba(255,255,255,.40),
+
+        0 4px 8px
+        rgba(80,40,12,.20);
+}
+
+
+.rod-cap.left {
+
+    left: 7px;
+}
+
+
+.rod-cap.right {
+
+    right: 7px;
+}
+
+
+/* =====================================================
+   INVITATION CONTENT
+===================================================== */
+
+.invitation-content {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 100%;
+
+    padding:
+        46px
+        48px
+        28px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translateY(30px);
+
+    transition:
+
+        opacity 1s ease .55s,
+
+        transform 1s ease .55s;
+}
+
+
+.scroll-wrap.opened
+.invitation-content {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =====================================================
+   TOP ORNAMENT
+===================================================== */
+
+.top-ornament {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 13px;
+}
+
+
+.top-ornament span {
+
+    width: 55px;
+
+    height: 1px;
+
+    background: #ad743b;
+}
+
+
+.top-ornament b {
+
+    font-size: 17px;
+
+    color: #a96d34;
+
+    font-weight: 400;
+}
+
+
+/* =====================================================
+   HEADING
+===================================================== */
+
+.heading-kicker {
+
+    margin-top: 8px;
+    margin-bottom: 5px;
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: 5px;
+
+    color: #8a5933;
+}
+
+
+.main-heading {
+
+    margin-top: 5px;
+
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size: 55px;
+
+    line-height: .9;
+
+    font-weight: 400;
+
+    color: #681c2b;
+}
+
+
+.heading-subtitle {
+
+    margin-top: 3px;
+
+    font-size: 16px;
+
+    font-style: italic;
+
+    letter-spacing: 2px;
+
+    color: #8c5c45;
+}
+
+
+/* =====================================================
+   COUPLE
+===================================================== */
+
+.couple {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    gap: 34px;
+
+    margin-top: 23px;
+}
+
+
+.person {
+
+    width: 225px;
+
+    min-width: 0;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   PHOTO
+===================================================== */
+
+.portrait-frame {
+
+    width: 185px;
+
+    height: 230px;
+
+    margin:
+        0 auto;
+
+    padding: 5px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #aa6d2e,
+            #f2d394,
+            #b47736,
+            #f4dba4
+        );
+
+    clip-path:
+
+        polygon(
+            7% 0,
+            93% 0,
+            100% 7%,
+            100% 93%,
+            93% 100%,
+            7% 100%,
+            0 93%,
+            0 7%
+        );
+
+    box-shadow:
+
+        0 12px 25px
+        rgba(70,35,15,.18);
+}
+
+
+.portrait-frame img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    clip-path:
+
+        polygon(
+            7% 0,
+            93% 0,
+            100% 7%,
+            100% 93%,
+            93% 100%,
+            7% 100%,
+            0 93%,
+            0 7%
+        );
+}
+
+
+/* =====================================================
+   NAMES
+
+   No nowrap.
+   Groom can safely wrap on mobile.
+===================================================== */
+
+.person h2 {
+
+    width: 100%;
+
+    margin-top: 11px;
+
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size: 37px;
+
+    line-height: .95;
+
+    font-weight: 400;
+
+    color: #681d2b;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =====================================================
+   CENTER HEART
+===================================================== */
+
+.couple-heart {
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 98px;
+
+    color: #8c2b3b;
+}
+
+
+.couple-heart span {
+
+    width: 25px;
+
+    height: 1px;
+
+    background: #ad7540;
+}
+
+
+.couple-heart b {
+
+    display: inline-block;
+
+    font-size: 28px;
+
+    font-weight: 400;
+
+    animation:
+        heartPulse 1.7s
+        ease-in-out
+        infinite;
+}
+
+
+/* =====================================================
+   PULSING HEART
+===================================================== */
+
+@keyframes heartPulse {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+
+        opacity: .85;
+
+        text-shadow:
+            0 0 0
+            rgba(153,43,61,0);
+    }
+
+    50% {
+
+        transform:
+            scale(1.25);
+
+        opacity: 1;
+
+        text-shadow:
+            0 0 12px
+            rgba(153,43,61,.30);
+    }
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.invitation-message {
+
+    margin-top: 20px;
+
+    color: #663740;
+}
+
+
+.message-divider {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    margin-bottom: 7px;
+}
+
+
+.message-divider span {
+
+    width: 55px;
+
+    height: 1px;
+
+    background: #b07945;
+}
+
+
+.message-divider b {
+
+    color: #a96c33;
+
+    font-size: 17px;
+
+    font-weight: 400;
+}
+
+
+.invitation-message p {
+
+    font-size: 14px;
+
+    font-style: italic;
+}
+
+
+.invitation-message strong {
+
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 17px;
+
+    line-height: 1.18;
+
+    font-weight: 500;
+}
+
+
+.invitation-message em {
+
+    display: block;
+
+    margin-top: 6px;
+
+    font-size: 11px;
+
+    color: #98623f;
+}
+
+
+/* =====================================================
+   DATE
+===================================================== */
+
+.date-line {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 12px;
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+
+    color: #8d592f;
+}
+
+
+.date-line i {
+
+    font-style: normal;
+
+    color: #bb8042;
+}
+
+
+/* =====================================================
+   ENTER BUTTON
+===================================================== */
+
+.enter-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 17px;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #721d2c;
+
+    cursor: pointer;
+
+    font: inherit;
+}
+
+
+.button-line {
+
+    width: 45px;
+
+    height: 1px;
+
+    background: #ad7038;
+}
+
+
+.button-label {
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 7px;
+
+    letter-spacing: 3px;
+}
+
+
+.button-arrow {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 27px;
+
+    height: 27px;
+
+    border:
+        1px solid #ad7038;
+
+    border-radius: 50%;
+
+    transition:
+        transform .3s ease,
+        background .3s ease;
+}
+
+
+.enter-button:hover
+.button-arrow {
+
+    transform:
+        translateY(4px);
+
+    background:
+        rgba(173,112,56,.10);
+}
+
+
+.bottom-symbol {
+
+    margin-top: 7px;
+
+    font-size: 17px;
+
+    color: #a76b34;
+}
+
+
+/* =====================================================
+   THREAD SYSTEM
+===================================================== */
+
+.thread-system {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    width: 245px;
+
+    height: 160px;
+
+    transform:
+        translate(-50%, -50%);
+
+    z-index: 30;
+
+    cursor: grab;
+
+    transition:
+
+        opacity .35s ease,
+
+        transform .4s ease;
+}
+
+
+.thread-system:active {
+
+    cursor: grabbing;
+}
+
+
+.thread-system.released {
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1.45)
+        rotate(8deg);
+}
+
+
+/* =====================================================
+   BOTH THREAD SIDES
+===================================================== */
+
+.cord {
+
+    position: absolute;
+
+    top: 50%;
+
+    width: 92px;
+
+    height: 5px;
+
+    margin-top: -2px;
+
+    border-radius: 10px;
+
+    background:
+
+        repeating-linear-gradient(
+            45deg,
+            #5b1220 0 5px,
+            #8c2538 5px 9px
+        );
+
+    box-shadow:
+        0 2px 3px
+        rgba(40,10,15,.25);
+}
+
+
+.cord-left {
+
+    left: 0;
+
+    transform:
+        rotate(-5deg);
+}
+
+
+.cord-right {
+
+    right: 0;
+
+    transform:
+        rotate(5deg);
+}
+
+
+/* =====================================================
+   KNOT
+===================================================== */
+
+.knot {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    width: 65px;
+
+    height: 65px;
+
+    transform:
+        translate(-50%, -50%);
+}
+
+
+.loop {
+
+    position: absolute;
+
+    width: 43px;
+
+    height: 43px;
+
+    top: 10px;
+
+    border:
+        5px solid #74192b;
+
+    border-radius: 50%;
+}
+
+
+.loop-one {
+
+    left: 0;
+
+    transform:
+        rotate(25deg);
+}
+
+
+.loop-two {
+
+    right: 0;
+
+    transform:
+        rotate(-25deg);
+}
+
+
+.knot-center {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    width: 17px;
+
+    height: 17px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: #661526;
+
+    border:
+        2px solid #d3a35d;
+}
+
+
+.tail {
+
+    position: absolute;
+
+    width: 45px;
+
+    height: 55px;
+
+    border-bottom:
+        5px solid #74192b;
+}
+
+
+.tail-left {
+
+    left: 3px;
+
+    bottom: -20px;
+
+    transform:
+        rotate(30deg);
+}
+
+
+.tail-right {
+
+    right: 3px;
+
+    bottom: -20px;
+
+    transform:
+        rotate(-30deg);
+}
+
+
+/* =====================================================
+   WAX SEAL
+===================================================== */
+
+.wax-seal {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    width: 52px;
+
+    height: 52px;
+
+    transform:
+        translate(-50%, -50%);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle at 35% 30%,
+            #a83a4c,
+            #5d1021 72%
+        );
+
+    border:
+        2px solid #d2a35d;
+
+    box-shadow:
+        0 5px 14px
+        rgba(50,15,20,.30);
+}
+
+
+.wax-seal span {
+
+    color: #e8ca8d;
+
+    font-size: 23px;
+}
+
+
+/* =====================================================
+   UNTIE HINT
+===================================================== */
+
+.untie-hint {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 17px;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: 4px;
+
+    color: #721d2c;
+
+    white-space: nowrap;
+
+    transition:
+        opacity .35s ease;
+}
+
+
+.untie-hint.hidden {
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+.untie-hint span {
+
+    color: #a97138;
+}
+
+
+/* =====================================================
+   PARTICLES
+===================================================== */
+
+.particle-layer {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 3000;
+
+    pointer-events: none;
+}
+
+
+.particle {
+
+    position: absolute;
+
+    width: 5px;
+
+    height: 5px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            #ffe8a7,
+            #b97831
+        );
+
+    box-shadow:
+        0 0 8px
+        rgba(210,157,72,.7);
+
+    animation:
+        particleBurst
+        .9s
+        cubic-bezier(.1,.8,.2,1)
+        forwards;
+}
+
+
+@keyframes particleBurst {
+
+    0% {
+
+        opacity: 1;
+
+        transform:
+            translate3d(0,0,0)
+            scale(1);
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate3d(
+                var(--x),
+                var(--y),
+                0
+            )
+            rotate(260deg)
+            scale(.1);
+    }
+}
+
+
+
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .scroll-wrap.opened {
+
+        width:
+            min(720px, calc(100vw - 50px));
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .opening-screen {
+
+        justify-content:
+            flex-start;
+
+        padding:
+            58px
+            14px
+            30px;
+    }
+
+
+    .opening-caption {
+
+        top: 20px;
+    }
+
+
+    .opening-caption p {
+
+        font-size: 6px;
+
+        letter-spacing: 3px;
+    }
+
+
+    /* CLOSED */
+
+    .scroll-wrap {
+
+        width:
+            calc(100vw - 34px);
+
+        height: 200px;
+    }
+
+
+    /* OPENED */
+
+    .scroll-wrap.opened {
+
+        width:
+            calc(100vw - 24px);
+
+        height:
+            755px;
+    }
+
+
+    .parchment {
+
+        top: 22px;
+
+        left: 7px;
+
+        width:
+            calc(100% - 14px);
+
+        height: 155px;
+    }
+
+
+    .scroll-wrap.opened
+    .parchment {
+
+        height:
+            calc(100% - 44px);
+    }
+
+
+    .scroll-rod {
+
+        height: 46px;
+    }
+
+
+    .rod-cap {
+
+        width: 30px;
+
+        height: 30px;
+
+        top: 8px;
+    }
+
+
+    .rod-cap.left {
+
+        left: 5px;
+    }
+
+
+    .rod-cap.right {
+
+        right: 5px;
+    }
+
+
+    /* CONTENT */
+
+    .invitation-content {
+
+        padding:
+            42px
+            18px
+            24px;
+    }
+
+
+    .top-ornament span {
+
+        width: 35px;
+    }
+
+
+    .heading-kicker {
+
+        font-size: 6px;
+
+        letter-spacing: 3px;
+    }
+
+
+    .main-heading {
+
+        font-size: 42px;
+    }
+
+
+    .heading-subtitle {
+
+        font-size: 13px;
+
+        letter-spacing: 1px;
+    }
+
+
+    /* COUPLE */
+
+    .couple {
+
+        gap: 5px;
+
+        margin-top: 20px;
+    }
+
+
+    .person {
+
+        width:
+            calc(50% - 12px);
+
+        min-width: 0;
+    }
+
+
+    .portrait-frame {
+
+        width: 100%;
+
+        max-width: 170px;
+
+        height: 175px;
+    }
+
+
+    /*
+       IMPORTANT:
+       Groom name can wrap instead of
+       getting cut outside the paper.
+    */
+
+    .person h2 {
+
+        width: 100%;
+
+        font-size: 28px;
+
+        line-height: .95;
+
+        overflow-wrap: normal;
+
+        word-break: normal;
+    }
+
+
+    .couple-heart {
+
+        margin-top: 72px;
+
+        gap: 3px;
+    }
+
+
+    .couple-heart span {
+
+        width: 10px;
+    }
+
+
+    .couple-heart b {
+
+        font-size: 23px;
+    }
+
+
+    /* MESSAGE */
+
+    .invitation-message {
+
+        margin-top: 17px;
+    }
+
+
+    .message-divider span {
+
+        width: 32px;
+    }
+
+
+    .invitation-message p {
+
+        font-size: 11px;
+    }
+
+
+    .invitation-message strong {
+
+        font-size: 13px;
+    }
+
+
+    .invitation-message em {
+
+        font-size: 8px;
+
+        margin-top: 5px;
+    }
+
+
+    /* DATE */
+
+    .date-line {
+
+        margin-top: 10px;
+
+        font-size: 7px;
+
+        letter-spacing: 3px;
+    }
+
+
+    /* BUTTON */
+
+    .enter-button {
+
+        margin-top: 13px;
+
+        gap: 7px;
+    }
+
+
+    .button-line {
+
+        width: 20px;
+    }
+
+
+    .button-label {
+
+        font-size: 5.5px;
+
+        letter-spacing: 1.8px;
+    }
+
+
+    .button-arrow {
+
+        width: 24px;
+
+        height: 24px;
+    }
+
+
+    .bottom-symbol {
+
+        margin-top: 5px;
+
+        font-size: 15px;
+    }
+
+
+    /* THREAD */
+
+    .thread-system {
+
+        transform:
+            translate(-50%, -50%)
+            scale(.80);
+    }
+
+
+    .thread-system.released {
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.25)
+            rotate(8deg);
+    }
+
+
+    .untie-hint {
+
+        bottom: 15px;
+
+        font-size: 6.5px;
+
+        letter-spacing: 2.5px;
+    }
+
+}
+
+
+/* =====================================================
+   SHORT MOBILE
+===================================================== */
+
+@media
+(max-width: 700px)
+and
+(max-height: 760px) {
+
+    .opening-screen {
+
+        padding-top: 52px;
+    }
+
+
+    .scroll-wrap.opened {
+
+        height: 755px;
+    }
+
+
+    .invitation-content {
+
+        padding-top: 39px;
+    }
+
+
+    .main-heading {
+
+        font-size: 39px;
+    }
+
+
+    .couple {
+
+        margin-top: 17px;
+    }
+
+
+    .portrait-frame {
+
+        height: 165px;
+    }
+
+
+    .person h2 {
+
+        font-size: 26px;
+    }
+
+
+    .invitation-message {
+
+        margin-top: 13px;
+    }
+
+
+    .enter-button {
+
+        margin-top: 11px;
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .scroll-wrap.opened {
+
+        width:
+            calc(100vw - 18px);
+
+        height: 745px;
+    }
+
+
+    .invitation-content {
+
+        padding-left: 11px;
+
+        padding-right: 11px;
+    }
+
+
+    .portrait-frame {
+
+        height: 155px;
+    }
+
+
+    .person h2 {
+
+        font-size: 24px;
+    }
+
+
+    .couple-heart span {
+
+        width: 6px;
+    }
+
+
+    .couple-heart b {
+
+        font-size: 20px;
+    }
+
+
+    .button-label {
+
+        font-size: 5px;
+
+        letter-spacing: 1.5px;
+    }
+
+}
+
+
+/* =====================================================
+   LAPTOPS WITH SHORT HEIGHT
+===================================================== */
+
+@media
+(min-width: 701px)
+and
+(max-height: 850px) {
+
+    .opening-screen {
+
+        padding:
+            22px
+            24px;
+    }
+
+
+    .scroll-wrap.opened {
+
+        height:
+            calc(100vh - 44px);
+    }
+
+
+    .invitation-content {
+
+        padding:
+            36px
+            42px
+            22px;
+    }
+
+
+    .main-heading {
+
+        font-size: 50px;
+    }
+
+
+    .couple {
+
+        margin-top: 18px;
+
+        gap: 25px;
+    }
+
+
+    .portrait-frame {
+
+        width: 165px;
+
+        height: 205px;
+    }
+
+
+    .person h2 {
+
+        font-size: 34px;
+    }
+
+
+    .couple-heart {
+
+        margin-top: 88px;
+    }
+
+
+    .invitation-message {
+
+        margin-top: 15px;
+    }
+
+
+    .date-line {
+
+        margin-top: 9px;
+    }
+
+
+    .enter-button {
+
+        margin-top: 12px;
+    }
+
+
+    .bottom-symbol {
+
+        margin-top: 4px;
+    }
+
+}
+
+
+/* =====================================================
+   SCENE 2 — ROYAL INVITATION
+===================================================== */
+
+.scene-two {
+    position: relative;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 20px 0 30px;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 42%,
+            #fffaf0 0%,
+            #f4e5c9 58%,
+            #e5c99d 100%
+        );
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   ROYAL FRAME
+===================================================== */
+
+.scene-two-frame {
+    position: relative;
+
+    width: min(100% - 40px, 1100px);
+
+    margin: 0 auto;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+
+    line-height: 0;
+}
+
+
+/* =====================================================
+   ROYAL BACKGROUND IMAGE
+===================================================== */
+
+.scene-two-bg {
+    display: block;
+
+    position: relative;
+
+    width: 100%;
+    height: auto;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+
+    object-fit: contain;
+
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   CONTENT OVERLAY
+===================================================== */
+
+.scene-two-content {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    pointer-events: none;
+
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 899px) {
+
+    .scene-two {
+        padding: 12px 0 20px;
+    }
+
+    .scene-two-frame {
+        width: calc(100% - 12px);
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .scene-two {
+        padding: 6px 0 12px;
+    }
+
+    .scene-two-frame {
+        width: calc(100% - 8px);
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .scene-two {
+        padding: 5px 0 10px;
+    }
+
+    .scene-two-frame {
+        width: calc(100% - 6px);
+    }
+
+}
+
+/* =====================================================
+   SCENE 2 — HIDDEN UNTIL ENTER BUTTON
+===================================================== */
+
+.scene-two {
+    display: none !important;
+}
+
+.scene-two.active {
+    display: flex !important;
+}
+
+/* =====================================================
+   SCENE 2 — MANGALA HEADER
+===================================================== */
+
+.scene-two-content {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   TOP THREE SACRED WORDS
+===================================================== */
+
+.mangal-texts {
+    position: absolute;
+
+    top: 6.2%;
+    left: 13%;
+    right: 13%;
+    
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    align-items: start;
+    justify-content: center;
+
+    gap: 2%;
+
+    text-align: center;
+
+    z-index: 5;
+}
+
+
+/* EACH ITEM */
+
+.mangal-item {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    color: #8d2028;
+
+    font-family:
+        "Noto Serif Telugu",
+        "Nirmala UI",
+        serif;
+
+    font-size: clamp(12px, 2.15vw, 25px);
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    white-space: nowrap;
+}
+
+/* ॥ */
+
+.mangal-item > span {
+    color: #9c5d20;
+
+    font-size: 0.72em;
+
+    font-weight: 400;
+}
+
+
+/* MAIN TELUGU WORD */
+
+.mangal-item strong {
+    font-weight: 500;
+}
+
+
+/* =====================================================
+   SMALL DECORATION UNDER EACH WORD
+===================================================== */
+
+.mangal-decoration {
+    position: absolute;
+
+    left: 50%;
+    bottom: -18px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 95px;
+
+    gap: 5px;
+}
+
+
+.mangal-decoration i {
+    width: 28px;
+    height: 1px;
+
+    background: #bd7929;
+
+    display: block;
+}
+
+
+.mangal-decoration i:last-child {
+
+    background:
+        linear-gradient(
+            90deg,
+            #bd7929,
+            transparent
+        );
+}
+
+
+.mangal-decoration b {
+    color: #bd7929;
+
+    font-size: 12px;
+
+    font-weight: 400;
+}
+
+
+
+/* =====================================================
+   GANESHA
+===================================================== */
+
+.ganesha-header {
+    position: absolute;
+
+    top: 9.2%;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 5;
+}
+
+
+
+.ganesha-image {
+    display: block;
+
+    width: clamp(135px, 19vw, 210px);
+
+    height: auto;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 3px 4px rgba(90, 45, 10, 0.18)
+        );
+}
+
+
+
+
+/* =====================================================
+   MESSAGE UNDER GANESHA
+===================================================== */
+
+.ganesha-message {
+    position: absolute;
+
+    top: 15.2%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 65%;
+
+    text-align: center;
+
+    z-index: 5;
+}
+
+
+.ganesha-message p {
+    margin: 0;
+
+    color: #713029;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(12px, 1.55vw, 18px);
+
+    font-weight: 400;
+
+    line-height: 1.35;
+
+    letter-spacing: 0.1px;
+}
+
+/* =====================================================
+   MESSAGE DIVIDER
+===================================================== */
+
+.royal-divider {
+    position: absolute;
+
+    top: 20.2%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 32%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    z-index: 5;
+}
+
+
+
+.royal-divider span {
+    flex: 1;
+
+    height: 1px;
+
+    background: #bd7929;
+}
+
+
+.royal-divider b {
+    color: #bd7929;
+
+    font-size: 18px;
+
+    font-weight: 400;
+}
+
+
+.royal-divider span:last-child {
+
+    background:
+        linear-gradient(
+            90deg,
+            #c27a28,
+            transparent
+        );
+}
+
+
+
+/* =====================================================
+   TABLET — 899px AND BELOW
+===================================================== */
+
+@media (max-width: 899px) {
+
+    /* ===============================
+       TOP THREE SACRED WORDS
+    =============================== */
+
+    .mangal-texts {
+        top: 5.6%;
+        left: 13%;
+        right: 13%;
+
+        gap: 1%;
+    }
+
+    .mangal-item {
+        gap: 4px;
+
+        font-size: clamp(
+            11px,
+            2.5vw,
+            20px
+        );
+    }
+
+    .mangal-item > span {
+        font-size: 0.68em;
+    }
+
+    .mangal-decoration {
+        bottom: -14px;
+
+        width: 65px;
+
+        gap: 3px;
+    }
+
+    .mangal-decoration i {
+        width: 20px;
+    }
+
+    .mangal-decoration b {
+        font-size: 9px;
+    }
+
+
+    /* ===============================
+       GANESHA
+    =============================== */
+
+    .ganesha-header {
+        top: 8.7%;
+    }
+
+    .ganesha-image {
+        width: clamp(
+            100px,
+            20vw,
+            160px
+        );
+    }
+
+
+    /* ===============================
+       MESSAGE
+    =============================== */
+
+    .ganesha-message {
+        top: 15.2%;
+
+        width: 72%;
+    }
+
+    .ganesha-message p {
+        font-size: clamp(
+            10px,
+            1.8vw,
+            16px
+        );
+
+        line-height: 1.35;
+    }
+
+
+    /* ===============================
+       DIVIDER
+    =============================== */
+
+    .royal-divider {
+        top: 21%;
+
+        width: 38%;
+
+        gap: 8px;
+    }
+
+    .royal-divider b {
+        font-size: 15px;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE — 600px AND BELOW
+===================================================== */
+
+@media (max-width: 600px) {
+
+    /* ===============================
+       TOP THREE SACRED WORDS
+    =============================== */
+
+    .mangal-texts {
+        top: 5.5%;
+
+        left: 13%;
+        right: 13%;
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 0;
+    }
+
+    .mangal-item {
+        gap: 2px;
+
+        font-size: clamp(
+            8px,
+            2.7vw,
+            13px
+        );
+
+        line-height: 1;
+    }
+
+    .mangal-item > span {
+        font-size: 0.62em;
+    }
+
+    .mangal-decoration {
+        bottom: -10px;
+
+        width: 42px;
+
+        gap: 2px;
+    }
+
+    .mangal-decoration i {
+        width: 11px;
+    }
+
+    .mangal-decoration b {
+        font-size: 6px;
+    }
+
+
+    /* ===============================
+       GANESHA
+    =============================== */
+
+    .ganesha-header {
+        top: 8.5%;
+    }
+
+    .ganesha-image {
+        width: clamp(
+            72px,
+            19vw,
+            110px
+        );
+    }
+
+
+    /* ===============================
+       MESSAGE
+    =============================== */
+
+    .ganesha-message {
+        top: 15%;
+
+        width: 82%;
+    }
+
+    .ganesha-message p {
+        font-size: clamp(
+            8px,
+            2.6vw,
+            12px
+        );
+
+        line-height: 1.35;
+
+        letter-spacing: 0;
+    }
+
+
+    /* ===============================
+       DIVIDER
+    =============================== */
+
+    .royal-divider {
+        top: 22.5%;
+
+        width: 45%;
+
+        gap: 5px;
+    }
+
+    .royal-divider b {
+        font-size: 10px;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE — 380px AND BELOW
+===================================================== */
+
+@media (max-width: 380px) {
+
+    /* ===============================
+       TOP THREE SACRED WORDS
+    =============================== */
+
+    .mangal-texts {
+        top: 6.2%;
+        left: 13%;
+        right: 13%;
+    }
+
+    .mangal-item {
+        gap: 1px;
+
+        font-size: 7.5px;
+    }
+
+    .mangal-item > span {
+        font-size: 0.58em;
+    }
+
+    .mangal-decoration {
+        bottom: -8px;
+
+        width: 34px;
+
+        gap: 1px;
+    }
+
+    .mangal-decoration i {
+        width: 8px;
+    }
+
+    .mangal-decoration b {
+        font-size: 5px;
+    }
+
+
+    /* ===============================
+       GANESHA
+    =============================== */
+
+    .ganesha-header {
+        top: 8.5%;
+    }
+
+    .ganesha-image {
+        width: 90px;
+    }
+
+
+    /* ===============================
+       MESSAGE
+    =============================== */
+
+    .ganesha-message {
+        top: 16%;
+
+        width: 86%;
+    }
+
+    .ganesha-message p {
+        font-size: 8px;
+
+        line-height: 1.3;
+    }
+
+
+    /* ===============================
+       DIVIDER
+    =============================== */
+
+    .royal-divider {
+        top: 22.6%;
+
+        width: 48%;
+
+        gap: 4px;
+    }
+
+    .royal-divider b {
+        font-size: 9px;
+    }
+
+}
+
+
+
+
+/* IMAGES */
+
+/* =====================================================
+   COUPLE SECTION
+===================================================== */
+
+.couple-section {
+    position: absolute;
+
+    top: 21%;
+    left: 0;
+    right: 0;
+
+    width: 65%;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        0.75fr
+        1fr;
+
+    align-items: start;
+
+    column-gap: 3%;
+
+    text-align: center;
+
+    z-index: 6;
+
+    /* REMOVE DEBUG RED */
+    background: transparent;
+}
+
+
+/* =====================================================
+   COUPLE CARD
+===================================================== */
+
+.couple-card {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    min-width: 0;
+}
+
+
+/* =====================================================
+   PHOTO FRAME
+===================================================== */
+
+.photo-frame {
+    position: relative;
+
+    width: min(100%, 220px);
+
+    margin: 0 auto;
+
+    box-sizing: border-box;
+}
+
+
+/* PHOTO */
+
+.photo-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    /* border: 2px solid #f8dda0; */
+
+    box-sizing: border-box;
+
+    object-fit: cover;
+}
+
+
+/* =====================================================
+   NAMES
+===================================================== */
+
+.couple-card h2 {
+    width: 100%;
+
+    margin: 22px 0 0;
+    margin-top: 8px;
+    color: #9b202b;
+
+    font-family: "Great Vibes", cursive;
+
+    font-size: clamp(
+        22px,
+        3vw,
+        48px
+    );
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   CENTER HEART + MESSAGE
+===================================================== */
+
+.couple-center {
+    align-self: start;
+
+    width: 100%;
+
+    padding-top: 65px;
+
+    text-align: center;
+
+    background: transparent;
+
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   ANIMATED DRAWING HEART
+===================================================== */
+
+.heart-symbol {
+    width: clamp(
+        65px,
+        6vw,
+        95px
+    );
+
+    height: clamp(
+        65px,
+        6vw,
+        95px
+    );
+
+    margin: 0 auto 18px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+.heart-drawing {
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+}
+
+
+/* HEART OUTLINE */
+
+.heart-stroke {
+    fill: none;
+
+    stroke: #a7192a;
+
+    stroke-width: 6;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    /*
+       SVG path length animation
+    */
+    stroke-dasharray: 650;
+
+    stroke-dashoffset: 650;
+
+    animation:
+        drawWeddingHeart
+        3s
+        ease-in-out
+        infinite;
+}
+
+
+/* =====================================================
+   LOOPING HEART DRAWING
+===================================================== */
+
+@keyframes drawWeddingHeart {
+
+    0% {
+        stroke-dashoffset: 650;
+        opacity: 1;
+    }
+
+    45% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+
+    65% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+
+    100% {
+        stroke-dashoffset: -650;
+        opacity: 0;
+    }
+}
+
+
+.couple-center p {
+    width: 100%;
+
+    margin: 0;
+
+    color: #743029;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(
+        11px,
+        1.3vw,
+        17px
+    );
+
+    font-style: italic;
+
+    line-height: 1.45;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   IMPORTANT — REMOVE GROOM OVERRIDE
+===================================================== */
+
+.groom-card img {
+    width: 100%;
+    height: auto;
+
+    margin: 0;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 899px) {
+
+    .couple-section {
+        top: 22%;
+
+        width: 65%;
+
+        column-gap: 2%;
+    }
+
+
+    .photo-frame {
+        width: min(100%, 220px);
+    }
+
+
+    .couple-card h2 {
+        font-size: clamp(
+            23px,
+            3.8vw,
+            36px
+        );
+        margin-top: 6px;
+    }
+
+
+    .couple-center {
+        padding-top: 50px;
+    }
+
+
+    .heart-symbol {
+        font-size: 48px;
+
+        margin-bottom: 10px;
+    }
+
+
+    .couple-center p {
+        font-size: 11px;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .couple-section {
+        top: 24.5%;
+
+        width: 65%;
+        column-gap: 2%;
+    }
+
+
+    .photo-frame {
+        width: min(100%, 220px);
+    }
+
+    .photo-frame img {
+        width: 80%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+
+    .couple-card h2 {
+        margin-top: 6px;
+        font-size: 16px;
+    }
+
+
+    .couple-center {
+        padding-top: 32px;
+    }
+
+
+    .heart-symbol {
+        width: 32px;
+        height: 32px;
+
+        margin-bottom: 6px;
+    }
+
+
+    .couple-center p {
+        font-size: 7.5px;
+
+        line-height: 1.35;
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .couple-section {
+        width: 55%;
+        top: 24%;
+    }
+
+
+    .photo-frame {
+        width: min(100%, 220px);
+    }
+
+    .photo-frame img {
+        width: 80%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .couple-card h2 {
+        font-size: 15px;
+        margin-top: 5px;
+    }
+
+
+    .couple-center {
+        padding-top: 28px;
+    }
+
+
+    .heart-symbol {
+        font-size: 15px;
+    }
+
+
+    .couple-center p {
+        font-size: 6.5px;
+    }
+
+    .heart-symbol {
+        width: 25px;
+        height: 25px;
+        margin-bottom: 7px;
+    }
+
+}
+
+
+/* =====================================================
+   WEDDING CELEBRATIONS
+===================================================== */
+
+.wedding-events {
+
+    position: absolute;
+
+    top: 45%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 68%;
+
+    z-index: 6;
+
+    text-align: center;
+
+    color: #743029;
+}
+
+
+/* =====================================================
+   TOP TRADITIONAL ORNAMENT
+===================================================== */
+
+.celebration-top-ornament {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    width: 100%;
+
+    margin-bottom: 4px;
+
+    color: #bd7929;
+}
+
+
+.celebration-top-ornament span {
+
+    height: 1px;
+
+    flex: 1;
+
+    max-width: 130px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #bd7929
+        );
+}
+
+
+.celebration-top-ornament span:last-child {
+
+    background:
+        linear-gradient(
+            90deg,
+            #bd7929,
+            transparent
+        );
+}
+
+
+.celebration-top-ornament i {
+
+    font-size: 16px;
+
+    font-style: normal;
+}
+
+
+.celebration-top-ornament b {
+
+    font-size: 8px;
+
+    font-weight: 400;
+}
+
+
+.celebration-top-ornament strong {
+
+    font-size: 25px;
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.events-title {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    width: 100%;
+}
+
+
+.events-title h2 {
+
+    margin: 0;
+
+    color: #9b202b;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(
+        24px,
+        2.5vw,
+        36px
+    );
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    white-space: nowrap;
+}
+
+
+.title-line {
+
+    flex: 1;
+
+    max-width: 90px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #bd7929
+        );
+}
+
+
+.title-line:last-child {
+
+    background:
+        linear-gradient(
+            90deg,
+            #bd7929,
+            transparent
+        );
+}
+
+
+.title-diamond {
+
+    color: #bd7929;
+
+    font-size: 8px;
+}
+
+
+/* =====================================================
+   TITLE BOTTOM ORNAMENT
+===================================================== */
+
+.title-bottom-ornament {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 8px;
+
+    margin-bottom: 10px;
+}
+
+
+.title-bottom-ornament span {
+
+    width: 90px;
+
+    height: 1px;
+
+    background: #bd7929;
+}
+
+
+.title-bottom-ornament b {
+
+    color: #bd7929;
+
+    font-size: 9px;
+
+    font-weight: 400;
+}
+
+
+/* =====================================================
+   NALUGU ROW
+===================================================== */
+
+.nalugu-row {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        55px
+        1fr;
+
+    align-items: center;
+
+    width: 100%;
+}
+
+
+/* =====================================================
+   NALUGU CARD
+===================================================== */
+
+.nalugu-card {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    min-width: 0;
+
+    padding: 5px 10px;
+}
+
+
+.nalugu-icon {
+
+    width: 65px;
+
+    height: 65px;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
+}
+
+
+/* =====================================================
+   EVENT TEXT
+===================================================== */
+
+.event-info {
+
+    text-align: center;
+}
+
+
+.event-info h3 {
+
+    margin: 0 0 5px;
+
+    color: #9b202b;
+
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size: clamp(
+        27px,
+        2.7vw,
+        40px
+    );
+
+    font-weight: 400;
+
+    line-height: 1;
+}
+
+
+.event-date {
+
+    margin: 0;
+
+    color: #743029;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(
+        11px,
+        1.15vw,
+        16px
+    );
+
+    line-height: 1.35;
+}
+
+
+.event-place {
+
+    margin: 2px 0 0;
+
+    color: #743029;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(
+        10px,
+        1.1vw,
+        15px
+    );
+
+    line-height: 1.3;
+}
+
+
+/* =====================================================
+   ONLY DIYA SEPARATES NALUGU
+===================================================== */
+
+.nalugu-divider {
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 3px;
+}
+
+
+.nalugu-divider span {
+
+    width: 1px;
+
+    height: 22px;
+
+    background: #bd7929;
+}
+
+
+.nalugu-divider img {
+
+    width: 38px;
+
+    height: 42px;
+
+    object-fit: contain;
+}
+
+
+/* =====================================================
+   ORNAMENT BETWEEN SECTIONS
+===================================================== */
+
+.section-ornament {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    margin: 7px auto 5px;
+
+    width: 85%;
+}
+
+
+.section-ornament span {
+
+    flex: 1;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #bd7929
+        );
+}
+
+
+.section-ornament span:last-child {
+
+    background:
+        linear-gradient(
+            90deg,
+            #bd7929,
+            transparent
+        );
+}
+
+
+.section-ornament i {
+
+    color: #bd7929;
+
+    font-size: 16px;
+
+    font-style: normal;
+}
+
+
+.section-ornament b {
+
+    color: #bd7929;
+
+    font-size: 7px;
+}
+
+
+.section-ornament strong {
+
+    color: #bd7929;
+
+    font-size: 18px;
+
+    font-weight: 400;
+}
+
+
+/* =====================================================
+   MAIN EVENTS
+===================================================== */
+
+.main-events {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1px
+        1fr
+        1px
+        1fr;
+
+    align-items: center;
+
+    width: 100%;
+}
+
+
+/* =====================================================
+   EVENT
+===================================================== */
+
+.main-event {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 0;
+
+    padding: 4px;
+}
+
+
+.main-event-icon {
+
+    width: 62px;
+
+    height: 50px;
+
+    object-fit: contain;
+
+    margin-bottom: 2px;
+}
+
+
+.main-event h3 {
+
+    margin: 0 0 5px;
+
+    color: #9b202b;
+
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size: clamp(
+        25px,
+        2.5vw,
+        38px
+    );
+
+    font-weight: 400;
+
+    line-height: 1;
+}
+
+
+.main-event .event-date {
+
+    font-size: clamp(
+        10px,
+        1.1vw,
+        15px
+    );
+}
+
+
+.event-time {
+
+    margin: 2px 0 0;
+
+    color: #743029;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(
+        9px,
+        1vw,
+        14px
+    );
+
+    line-height: 1.3;
+
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   ORNAMENTAL VERTICAL DIVIDER
+===================================================== */
+
+.event-vertical-line {
+
+    position: relative;
+
+    width: 1px;
+
+    height: 72px;
+
+    background: #bd7929;
+}
+
+
+.event-vertical-line::before,
+.event-vertical-line::after {
+
+    content: "✦";
+
+    position: absolute;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: #bd7929;
+
+    font-size: 8px;
+}
+
+
+.event-vertical-line::before {
+
+    top: -10px;
+}
+
+
+.event-vertical-line::after {
+
+    bottom: -10px;
+}
+
+
+.event-vertical-line span {
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    color: #bd7929;
+
+    font-size: 7px;
+
+    background: #f5e6c7;
+
+    padding: 4px 0;
+}
+
+
+/* =====================================================
+   VENUE
+===================================================== */
+
+.venue-section {
+
+    width: 100%;
+
+    margin-top: 8px;
+}
+
+
+.venue-line {
+
+    width: 82%;
+
+    height: 1px;
+
+    margin: 0 auto;
+
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #bd7929,
+            transparent
+        );
+}
+
+
+.venue-content {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 5px 0;
+}
+
+
+.venue-location {
+    color: #a7192a;
+
+    font-size: 25px;
+
+    line-height: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.venue-content h2 {
+
+    margin: 0;
+    margin-top: 6px;
+
+    color: #9b202b;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(
+        20px,
+        2vw,
+        30px
+    );
+
+    font-weight: 700;
+
+    line-height: 1.1;
+}
+
+
+.venue-content p {
+
+    margin: 2px 0 0;
+
+    color: #743029;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(
+        10px,
+        1.1vw,
+        15px
+    );
+    margin-top: 8px;
+    margin-bottom: 6px;
+}
+
+
+
+/* =====================================================
+   RESPONSIVE — TABLET
+   601px → 899px
+===================================================== */
+
+@media (max-width: 899px) {
+
+    .wedding-events {
+        top: 47%;
+        width: 78%;
+    }
+
+
+    /* ================================
+       TITLE
+    ================================= */
+
+    .events-title {
+        gap: 5px;
+    }
+
+    .events-title h2 {
+        font-size: clamp(18px, 3.8vw, 22px);
+    }
+
+    .title-line {
+        max-width: 65px;
+    }
+
+    .title-bottom-ornament {
+        margin-top: 6px;
+        margin-bottom: 8px;
+    }
+
+    .title-bottom-ornament span {
+        width: 60px;
+    }
+
+
+    /* ================================
+       TOP ORNAMENT
+    ================================= */
+
+    .celebration-top-ornament {
+        gap: 4px;
+    }
+
+    .celebration-top-ornament span {
+        max-width: 80px;
+    }
+
+    .celebration-top-ornament i {
+        font-size: 12px;
+    }
+
+    .celebration-top-ornament strong {
+        font-size: 20px;
+    }
+
+
+    /* ================================
+       NALUGU
+    ================================= */
+
+    .nalugu-row {
+        grid-template-columns:
+            1fr
+            40px
+            1fr;
+    }
+
+    .nalugu-card {
+        gap: 7px;
+        padding: 3px 4px;
+    }
+
+    .nalugu-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .event-info h3 {
+        font-size: clamp(17px, 3.5vw, 18px);
+        margin-bottom: 3px;
+    }
+
+    .event-date {
+        font-size: clamp(10px, 1.7vw, 13px);
+    }
+
+    .event-place {
+        font-size: clamp(9px, 1.6vw, 13px);
+    }
+
+
+    /* DIYA */
+
+    .nalugu-divider {
+        gap: 2px;
+    }
+
+    .nalugu-divider span {
+        height: 13px;
+    }
+
+    .nalugu-divider img {
+        width: 28px;
+        height: 24px;
+    }
+
+
+    /* ================================
+       SECTION ORNAMENT
+    ================================= */
+
+    .section-ornament {
+        width: 80%;
+        margin: 5px auto 4px;
+    }
+
+    .section-ornament i {
+        font-size: 13px;
+    }
+
+    .section-ornament strong {
+        font-size: 15px;
+    }
+
+
+    /* ================================
+       MAIN EVENTS
+    ================================= */
+
+    .main-event {
+        padding: 2px;
+    }
+
+    .main-event-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .main-event h3 {
+        font-size: clamp(17px, 3.3vw, 18px);
+        margin-bottom: 3px;
+    }
+
+    .main-event .event-date {
+        font-size: clamp(10px, 1.5vw, 14px);
+    }
+
+    .event-time {
+        font-size: clamp(8px, 1.4vw, 12px);
+    }
+
+
+    /* VERTICAL DIVIDERS */
+
+    .event-vertical-line {
+        height: 34px;
+    }
+
+    .event-vertical-line::before,
+    .event-vertical-line::after {
+        font-size: 6px;
+    }
+
+    .event-vertical-line span {
+        font-size: 6px;
+        padding: 3px 0;
+    }
+
+
+    /* ================================
+       VENUE
+    ================================= */
+
+    .venue-section {
+        margin-top: 5px;
+    }
+
+    .venue-content {
+        gap: 7px;
+        padding: 3px 0;
+    }
+
+    .venue-location {
+        font-size: 20px;
+    }
+
+    .venue-content h2 {
+        margin-top: 3px;
+        margin-bottom: 6px;
+        font-size: clamp(17px, 2.8vw, 24px);
+    }
+
+    .venue-content p {
+        margin-top: 4px;
+        margin-bottom: 6px;
+        font-size: clamp(8px, 1.5vw, 12px);
+    }
+
+    .venue-line {
+        width: 75%;
+    }
+}
+
+
+/* =====================================================
+   RESPONSIVE — MOBILE
+   381px → 600px
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .wedding-events {
+        top: 46%;
+        width: 68%;
+    }
+
+
+    /* ================================
+       TOP ORNAMENT
+    ================================= */
+
+    .celebration-top-ornament {
+        gap: 3px;
+        margin-bottom: 2px;
+    }
+
+    .celebration-top-ornament span {
+        max-width: 35px;
+    }
+
+    .celebration-top-ornament i {
+        font-size: 9px;
+    }
+
+    .celebration-top-ornament b {
+        font-size: 6px;
+    }
+
+    .celebration-top-ornament strong {
+        font-size: 15px;
+    }
+
+
+    /* ================================
+       TITLE
+    ================================= */
+
+    .events-title {
+        gap: 3px;
+    }
+
+    .events-title h2 {
+        font-size: clamp(12px, 5vw, 14px);
+    }
+
+    .title-line {
+        max-width: 32px;
+    }
+
+    .title-diamond {
+        font-size: 6px;
+    }
+
+
+    .title-bottom-ornament {
+        gap: 5px;
+        margin-top: 4px;
+        margin-bottom: 5px;
+    }
+
+    .title-bottom-ornament span {
+        width: 38px;
+    }
+
+    .title-bottom-ornament b {
+        font-size: 7px;
+    }
+
+
+    /* ================================
+       NALUGU
+    ================================= */
+
+    .nalugu-row {
+        grid-template-columns:
+            1fr
+            27px
+            1fr;
+    }
+
+    .nalugu-card {
+        gap: 3px;
+        padding: 2px;
+    }
+
+    .nalugu-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .event-info h3 {
+        font-size: clamp(12px, 5vw, 14px);
+        margin-bottom: 2px;
+    }
+
+    .event-date {
+        font-size: clamp(8px, 2vw, 10px);
+    }
+
+    .event-place {
+        font-size: clamp(7px, 1.9vw, 10px);
+        margin-top: 1px;
+    }
+
+
+    /* ================================
+       DIYA
+    ================================= */
+
+    .nalugu-divider {
+        gap: 1px;
+    }
+
+    .nalugu-divider span {
+        height: 8px;
+    }
+
+    .nalugu-divider img {
+        width: 18px;
+        height: 18px;
+    }
+
+
+    /* ================================
+       SECTION ORNAMENT
+    ================================= */
+
+    .section-ornament {
+        width: 72%;
+        gap: 3px;
+        margin: 4px auto 3px;
+    }
+
+    .section-ornament i {
+        font-size: 8px;
+    }
+
+    .section-ornament b {
+        font-size: 5px;
+    }
+
+    .section-ornament strong {
+        font-size: 12px;
+    }
+
+
+    /* ================================
+       MAIN EVENTS
+    ================================= */
+
+    .main-events {
+        grid-template-columns:
+            1fr
+            1px
+            1fr
+            1px
+            1fr;
+    }
+
+    .main-event {
+        padding: 1px;
+    }
+
+    .main-event-icon {
+        width: 24px;
+        height: 24px;
+        margin-bottom: 1px;
+    }
+
+    .main-event h3 {
+        font-size: clamp(14px, 4vw, 18px);
+        margin-bottom: 2px;
+    }
+
+    .main-event .event-date {
+        font-size: clamp(8px, 1.9vw, 10px);
+    }
+
+    .event-time {
+        font-size: clamp(6px, 1.75vw, 9px);
+        margin-top: 1px;
+    }
+
+
+    /* ================================
+       VERTICAL DIVIDERS
+    ================================= */
+
+    .event-vertical-line {
+        height: 20px;
+    }
+
+    .event-vertical-line::before,
+    .event-vertical-line::after {
+        font-size: 5px;
+    }
+
+    .event-vertical-line::before {
+        top: -7px;
+    }
+
+    .event-vertical-line::after {
+        bottom: -7px;
+    }
+
+    .event-vertical-line span {
+        font-size: 5px;
+        padding: 2px 0;
+    }
+
+
+    /* ================================
+       VENUE
+    ================================= */
+
+    .venue-section {
+        margin-top: 4px;
+    }
+
+    .venue-line {
+        width: 70%;
+    }
+
+    .venue-content {
+        gap: 5px;
+        padding: 2px 0;
+    }
+
+    .venue-location {
+        font-size: 17px;
+    }
+
+    .venue-content h2 {
+        margin-top: 2px;
+        font-size: clamp(14px, 4vw, 20px);
+    }
+
+    .venue-content p {
+        margin-top: 2px;
+        margin-bottom: 5px;
+        font-size: clamp(7px, 1.9vw, 10px);
+    }
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+   ≤ 380px
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .wedding-events {
+        top: 43%;
+        width: 68%;
+    }
+
+
+    /* TOP */
+
+    .celebration-top-ornament span {
+        max-width: 22px;
+    }
+
+    .celebration-top-ornament i {
+        font-size: 7px;
+    }
+
+    .celebration-top-ornament b {
+        font-size: 5px;
+    }
+
+    .celebration-top-ornament strong {
+        font-size: 12px;
+    }
+
+
+    /* TITLE */
+
+    .events-title h2 {
+        font-size: 14px;
+    }
+
+    .title-line {
+        max-width: 22px;
+    }
+
+    .title-diamond {
+        font-size: 5px;
+    }
+
+
+    /* NALUGU */
+
+    .nalugu-row {
+        grid-template-columns:
+            1fr
+            23px
+            1fr;
+    }
+
+    .nalugu-card {
+        gap: 2px;
+        padding: 1px;
+    }
+
+    .nalugu-icon {
+        width: 25px;
+        height: 25px;
+    }
+
+    .event-info h3 {
+        font-size: 12px;
+    }
+
+    .event-date {
+        font-size: 8px;
+    }
+
+    .event-place {
+        font-size: 7px;
+    }
+
+
+    /* DIYA */
+
+    .nalugu-divider span {
+        height: 6px;
+    }
+
+    .nalugu-divider img {
+        width: 18px;
+        height: 18px;
+    }
+
+
+    /* MAIN EVENTS */
+
+    .main-event-icon {
+        width: 25px;
+        height: 25px;
+    }
+
+    .main-event h3 {
+        font-size: 12px;
+    }
+
+    .main-event .event-date {
+        font-size: 8px;
+    }
+
+    .event-time {
+        font-size: 7px;
+    }
+
+
+    .event-vertical-line {
+        height: 14px;
+    }
+
+
+    /* VENUE */
+
+    .venue-location {
+        font-size: 14px;
+    }
+
+    .venue-content h2 {
+        font-size: 14px;
+    }
+
+    .venue-content p {
+        font-size: 7px;
+    }
+
+    .venue-line {
+        width: 65%;
+    }
+}
+
+
+
+/* =====================================================
+   FINAL INVITATION MESSAGE
+===================================================== */
+
+.final-invitation {
+
+    position: absolute;
+
+    top: 71%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 55%;
+
+    z-index: 6;
+
+    text-align: center;
+
+    color: #743029;
+}
+
+
+/* =====================================================
+   TOP ORNAMENT
+===================================================== */
+
+.final-ornament {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    width: 100%;
+
+    margin-bottom: 8px;
+}
+
+
+.final-ornament span {
+
+    flex: 1;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #bd7929
+        );
+}
+
+
+.final-ornament span:last-child {
+
+    background:
+        linear-gradient(
+            90deg,
+            #bd7929,
+            transparent
+        );
+}
+
+
+.final-ornament b {
+
+    color: #bd7929;
+
+    font-size: 8px;
+
+    font-weight: 400;
+}
+
+
+.final-ornament strong {
+
+    color: #bd7929;
+
+    font-size: 17px;
+
+    font-weight: 400;
+}
+
+
+/* =====================================================
+   FAMILY BLESSINGS
+===================================================== */
+
+.family-blessings {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        50px
+        1fr;
+
+    align-items: center;
+
+    width: 100%;
+}
+
+
+.family-block {
+
+    text-align: center;
+}
+
+
+.blessing-label {
+
+    margin: 0 0 3px;
+    
+    color: #743029;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(
+        10px,
+        1.1vw,
+        15px
+    );
+}
+
+
+.family-block h3 {
+
+    margin: 0 0 6px;
+    margin-top: 12px;
+
+    color: #9b202b;
+
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size: clamp(
+        25px,
+        2.5vw,
+        38px
+    );
+
+    font-weight: 400;
+
+    line-height: 1;
+}
+
+
+.family-block > p:last-child {
+
+    margin: 0;
+
+
+    color: #743029;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(
+        10px,
+        1.1vw,
+        15px
+    );
+
+    line-height: 1.3;
+}
+
+
+/* =====================================================
+   CENTER HEART
+===================================================== */
+
+.family-heart {
+
+    color: #a7192a;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: clamp(
+        30px,
+        3vw,
+        45px
+    );
+
+    line-height: 1;
+}
+
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.final-divider {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    width: 75%;
+
+    margin: 10px auto;
+}
+
+
+.final-divider span {
+
+    flex: 1;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #bd7929
+        );
+}
+
+
+.final-divider span:last-child {
+
+    background:
+        linear-gradient(
+            90deg,
+            #bd7929,
+            transparent
+        );
+}
+
+
+.final-divider b {
+
+    color: #bd7929;
+
+    font-size: 17px;
+
+    font-weight: 400;
+}
+
+
+/* =====================================================
+   INVITATION MESSAGE
+===================================================== */
+
+.invitation-message {
+
+    width: 100%;
+
+    text-align: center;
+}
+
+
+.invitation-message p {
+
+    margin: 3px 0;
+
+    color: #743029;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(
+        10px,
+        1.15vw,
+        15px
+    );
+
+    line-height: 1.45;
+}
+
+
+.invitation-message .message-highlight {
+
+    font-style: italic;
+
+    color: #743029;
+}
+
+
+/* =====================================================
+   BOTTOM DIVIDER
+===================================================== */
+
+.bottom-divider {
+
+    margin-top: 10px;
+
+    margin-bottom: 7px;
+}
+
+
+/* =====================================================
+   WARM REGARDS
+===================================================== */
+
+.warm-regards > p {
+
+    margin: 0 0 2px;
+    margin-top: 14px;
+
+    color: #743029;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(
+        9px,
+        1vw,
+        14px
+    );
+}
+
+
+.regards-title {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+}
+
+
+.regards-title span {
+
+    color: #a7192a;
+
+    font-family: Georgia, serif;
+
+    font-size: 28px;
+
+    line-height: 1;
+}
+
+
+.regards-title h3 {
+
+    margin: 0;
+
+    color: #9b202b;
+
+    font-family:
+        "Great Vibes",
+        cursive;
+
+    font-size: clamp(
+        25px,
+        2.5vw,
+        38px
+    );
+    margin-top: 15px;
+
+
+    font-weight: 400;
+
+    line-height: 1;
+}
+
+
+/* =====================================================
+   FINAL MESSAGE — TABLET
+===================================================== */
+
+@media (max-width: 899px) {
+
+    .final-invitation {
+
+        top: 72%;
+
+        width: 65%;
+    }
+
+    .family-blessings {
+
+        grid-template-columns:
+            1fr
+            35px
+            1fr;
+    }
+
+    .family-block h3 {
+
+        font-size: clamp(
+            19px,
+            3.2vw,
+            18px
+        );
+    }
+
+    .family-block > p:last-child {
+
+        font-size: clamp(
+            8px,
+            1.5vw,
+            12px
+        );
+    }
+
+    .blessing-label {
+
+        font-size: clamp(
+            8px,
+            1vw,
+            17px
+        );
+    }
+
+    .family-heart {
+
+        font-size: 30px;
+    }
+
+    .invitation-message p {
+
+        font-size: clamp(
+            8px,
+            1.5vw,
+            12px
+        );
+
+    }
+
+    .final-divider {
+
+        width: 60%;
+
+        margin: 7px auto;
+        margin-bottom: -10px;
+    }
+    
+    .regards-title h3 {
+
+        font-size: clamp(
+            17px,
+            3vw,
+            19px
+        );
+        margin-top: 10px;
+    }
+    .invitation-message {
+
+        width: 100%;
+
+        text-align: center;
+    }
+
+
+    .invitation-message p {
+
+        margin: 3px 0;
+
+        color: #743029;
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: clamp(
+            10px,
+            1.15vw,
+            15px
+        );
+
+        line-height: 1.45;
+    }
+
+
+    .invitation-message .message-highlight {
+
+        font-style: italic;
+
+        color: #743029;
+    }
+    .warm-regards > p {
+
+        margin: 0 0 2px;
+        margin-top: 19px;
+
+        color: #743029;
+
+        font-family:
+            Georgia,
+            "Times New Roman",
+            serif;
+
+        font-size: clamp(
+            9px,
+            1vw,
+            14px
+        );
+    }
+}
+
+
+/* =====================================================
+   FINAL MESSAGE — MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .final-invitation {
+
+        top: 80%;
+
+        width: 75%;
+    }
+
+    .final-ornament {
+
+        gap: 3px;
+
+        margin-bottom: 5px;
+    }
+
+    .final-ornament b {
+
+        font-size: 6px;
+    }
+
+    .final-ornament strong {
+
+        font-size: 12px;
+    }
+
+
+    .family-blessings, .final-ornament {
+
+        display: none;
+    }
+
+    .blessing-label {
+
+        font-size: 7px;
+    }
+
+    .family-block h3 {
+
+        font-size: 19px;
+
+        margin-bottom: 3px;
+    }
+
+    .family-block > p:last-child {
+
+        font-size: 7px;
+
+        line-height: 1.35;
+    }
+
+    .family-heart {
+
+        font-size: 23px;
+    }
+
+
+    .final-divider {
+
+        width: 70%;
+
+        gap: 3px;
+
+        margin: 2px auto;
+    }
+
+    .final-divider b {
+
+        font-size: 12px;
+    }
+
+
+    .invitation-message p {
+
+        font-size: 8px;
+
+        line-height: 1.3;
+        margin: 2px 0;
+        margin-top: 0px;
+    }
+
+
+    .warm-regards > p {
+
+        font-size: 7px;
+    }
+
+    .regards-title {
+
+        gap: 2px;
+    }
+
+    .regards-title span {
+
+        font-size: 19px;
+    }
+
+    .regards-title h3 {
+
+        font-size: 20px;
+    }
+    .warm-regards {
+        display: none;
+    }
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .final-invitation {
+
+        width: 60%;
+    }
+
+    .family-blessings, .final-ornament {
+
+        display: none;
+    }
+
+    .family-block h3 {
+
+        font-size: 8px;
+        margin-top: 3px;
+    }
+
+    .family-block > p:last-child {
+
+        font-size: 6.5px;
+    }
+
+    .blessing-label {
+
+        font-size: 6px;
+    }
+
+    .family-heart {
+
+        font-size: 10px;
+    }
+
+    .invitation-message p {
+
+        font-size: 6px;
+        margin-top: 1px;
+    }
+    .final-divider b{
+        font-size: 8px;
+        margin-bottom: 1px;
+    }
+    .regards-title h3 {
+
+        font-size: 12px;
+        margin-top: 4px;
+    }
+
+    .warm-regards > p {
+
+        font-size: 7px;
+        margin-top: 1px;
+    }
+
+    .regards-title {
+
+        gap: 5px;
+    }
+
+    .regards-title span {
+
+        font-size: 19px;
+    }
+
+    .regards-title h3 {
+
+        font-size: 20px;
+    }
+}
+
+
+
+/* =====================================================
+   SCENE 2 — REVEAL
+   IMPORTANT: DO NOT TOUCH TRANSFORM
+===================================================== */
+
+.reveal-scene {
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 1.4s ease,
+        visibility 0s linear 1.4s;
+}
+
+
+.reveal-scene.show {
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        opacity 1.4s ease,
+        visibility 0s;
+}
+
