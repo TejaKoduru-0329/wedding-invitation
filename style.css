@@ -1405,9 +1405,7 @@ body {
     }
 }
 
-.invitation-message.scene1-message{
-        font-size: 2px;
-    }
+
 
 
 
@@ -3881,7 +3879,17 @@ and
         top: 47%;
         width: 78%;
     }
+    .final-ornament {
 
+        gap: 3px;
+        margin-top: 6px;
+        margin-bottom: 5px;
+    }
+    .invitation-message {
+
+        width: 75%;
+        margin-top: 12px;
+    }
 
     /* ================================
        TITLE
@@ -4040,6 +4048,14 @@ and
     .event-vertical-line span {
         font-size: 6px;
         padding: 3px 0;
+    }
+
+    .final-divider {
+
+        width: 60%;
+
+        margin-top: 2px;
+        margin-bottom: -10px;
     }
 
 
@@ -4443,7 +4459,7 @@ and
 
 
     .event-vertical-line {
-        height: 14px;
+        height: 18px;
     }
 
 
@@ -4455,11 +4471,13 @@ and
     }
 
     .venue-content h2 {
-        font-size: 12px;
+        font-size: 16px;
+        margin-top: -2px;
     }
 
     .venue-content p {
         font-size: 7px;
+        margin-top: 4px;
     }
 
     .venue-line {
@@ -5096,6 +5114,8 @@ and
     .warm-regards {
         margin-top: -8px;
     }
+    
+
 }
 
 
@@ -5208,6 +5228,19 @@ and
     }
     .warm-regards{
         margin-top: 4px;
+    }
+    .venue-line{
+        margin-top: -11px;
+        
+    }
+    .venue-location{
+        margin-top: -13px;
+    }
+    .venue-location h2 {
+        margin-bottom: -12px;
+    }
+    .venue-location p{
+        margin-top: 1px;
     }
 }
 
