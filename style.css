@@ -810,7 +810,7 @@ body {
 
 .invitation-message {
 
-    margin-top: 20px;
+    margin-top: 2px;
 
     color: #663740;
 }
@@ -934,7 +934,7 @@ body {
 
     gap: 10px;
 
-    margin-top: 17px;
+    margin-top: 12px;
 
     padding: 0;
 
@@ -966,7 +966,7 @@ body {
         "Montserrat",
         sans-serif;
 
-    font-size: 7px;
+    font-size: 11px;
 
     letter-spacing: 3px;
 }
@@ -1405,7 +1405,9 @@ body {
     }
 }
 
-
+.invitation-message.scene1-message{
+        font-size: 2px;
+    }
 
 
 
@@ -1640,7 +1642,7 @@ body {
 
     .invitation-message {
 
-        margin-top: 17px;
+        margin-top: 4px;
     }
 
 
@@ -1650,21 +1652,20 @@ body {
     }
 
 
-    .invitation-message p {
-
-        font-size: 11px;
+    .scene1-message{
+        font-size: 12px;
     }
 
 
     .invitation-message strong {
 
-        font-size: 13px;
+        font-size: 18px;
     }
 
 
     .invitation-message em {
 
-        font-size: 8px;
+        font-size: 12px;
 
         margin-top: 5px;
     }
@@ -1700,7 +1701,7 @@ body {
 
     .button-label {
 
-        font-size: 5.5px;
+        font-size: 8px;
 
         letter-spacing: 1.8px;
     }
@@ -1867,7 +1868,7 @@ and
 
     .button-label {
 
-        font-size: 5px;
+        font-size: 8px;
 
         letter-spacing: 1.5px;
     }
@@ -1958,7 +1959,9 @@ and
 
         margin-top: 12px;
     }
-
+    .button-label{
+        font-size: 8px;
+    }
 
     .bottom-symbol {
 
@@ -2069,7 +2072,7 @@ and
    TABLET
 ===================================================== */
 
-@media (max-width: 899px) {
+@media (min-width: 601px) and (max-width: 1000px){
 
     .scene-two {
         padding: 12px 0 20px;
@@ -2086,7 +2089,7 @@ and
    MOBILE
 ===================================================== */
 
-@media (max-width: 600px) {
+@media (min-width:381px) and (max-width: 600px) {
 
     .scene-two {
         padding: 6px 0 12px;
@@ -2411,7 +2414,7 @@ and
    TABLET — 899px AND BELOW
 ===================================================== */
 
-@media (max-width: 899px) {
+@media (min-width: 601px) and (max-width: 1000px) {
 
     /* ===============================
        TOP THREE SACRED WORDS
@@ -2517,7 +2520,7 @@ and
    MOBILE — 600px AND BELOW
 ===================================================== */
 
-@media (max-width: 600px) {
+@media (min-width:381px) and (max-width: 600px) {
 
     /* ===============================
        TOP THREE SACRED WORDS
@@ -2596,11 +2599,7 @@ and
     }
 
     .ganesha-message p {
-        font-size: clamp(
-            8px,
-            2.6vw,
-            12px
-        );
+        font-size: 8px;
 
         line-height: 1.35;
 
@@ -2613,7 +2612,7 @@ and
     =============================== */
 
     .royal-divider {
-        top: 22.5%;
+        
 
         width: 45%;
 
@@ -2705,7 +2704,7 @@ and
     =============================== */
 
     .royal-divider {
-        top: 22.6%;
+        top: 21.6%;
 
         width: 48%;
 
@@ -2982,7 +2981,7 @@ and
    TABLET
 ===================================================== */
 
-@media (max-width: 899px) {
+@media (min-width: 601px) and (max-width: 1000px){
 
     .couple-section {
         top: 22%;
@@ -3031,10 +3030,10 @@ and
    MOBILE
 ===================================================== */
 
-@media (max-width: 600px) {
+@media (min-width:381px) and (max-width: 600px) {
 
     .couple-section {
-        top: 24.5%;
+        top: 22.5%;
 
         width: 65%;
         column-gap: 2%;
@@ -3088,7 +3087,7 @@ and
 
     .couple-section {
         width: 55%;
-        top: 24%;
+        top: 23%;
     }
 
 
@@ -3876,7 +3875,7 @@ and
    601px → 899px
 ===================================================== */
 
-@media (max-width: 899px) {
+@media (min-width: 601px) and (max-width: 1000px) {
 
     .wedding-events {
         top: 47%;
@@ -3948,8 +3947,8 @@ and
     }
 
     .nalugu-icon {
-        width: 34px;
-        height: 34px;
+        width: 40px;
+        height: 40px;
     }
 
     .event-info h3 {
@@ -4009,8 +4008,8 @@ and
     }
 
     .main-event-icon {
-        width: 34px;
-        height: 34px;
+        width: 40px;
+        height: 40px;
     }
 
     .main-event h3 {
@@ -4084,10 +4083,10 @@ and
    381px → 600px
 ===================================================== */
 
-@media (max-width: 600px) {
+@media (min-width:381px) and (max-width: 600px) {
 
     .wedding-events {
-        top: 46%;
+        top: 44%;
         width: 68%;
     }
 
@@ -4127,7 +4126,8 @@ and
     }
 
     .events-title h2 {
-        font-size: clamp(12px, 5vw, 14px);
+        font-size: 12px;
+        margin-top: -4px;
     }
 
     .title-line {
@@ -4314,12 +4314,12 @@ and
     }
 
     .venue-location {
-        font-size: 17px;
+        font-size: 12px;
     }
 
     .venue-content h2 {
         margin-top: 2px;
-        font-size: clamp(14px, 4vw, 20px);
+        font-size: 12px;
     }
 
     .venue-content p {
@@ -4338,7 +4338,7 @@ and
 @media (max-width: 380px) {
 
     .wedding-events {
-        top: 43%;
+        top: 41.6%;
         width: 68%;
     }
 
@@ -4365,7 +4365,8 @@ and
     /* TITLE */
 
     .events-title h2 {
-        font-size: 14px;
+        font-size: 12px;
+        margin-top: -3px;
     }
 
     .title-line {
@@ -4449,11 +4450,12 @@ and
     /* VENUE */
 
     .venue-location {
-        font-size: 14px;
+        font-size: 12px;
+        margin-top: -6px;
     }
 
     .venue-content h2 {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .venue-content p {
@@ -4853,7 +4855,7 @@ and
    FINAL MESSAGE — TABLET
 ===================================================== */
 
-@media (max-width: 899px) {
+@media (max-width: 960px) {
 
     .final-invitation {
 
@@ -4989,13 +4991,13 @@ and
    FINAL MESSAGE — MOBILE
 ===================================================== */
 
-@media (max-width: 600px) {
+@media (min-width:381px) and (max-width: 600px) {
 
     .final-invitation {
 
-        top: 80%;
+        top: 77%;
 
-        width: 75%;
+        width: 60%;
     }
 
     .final-ornament {
@@ -5065,7 +5067,7 @@ and
 
         font-size: 8px;
 
-        line-height: 1.3;
+        line-height: 1.4;
         margin: 2px 0;
         margin-top: 0px;
     }
@@ -5088,10 +5090,11 @@ and
 
     .regards-title h3 {
 
-        font-size: 20px;
+        font-size: 18px;
+        margin-top: 4px;
     }
     .warm-regards {
-        display: none;
+        margin-top: -8px;
     }
 }
 
@@ -5103,7 +5106,7 @@ and
 @media (max-width: 380px) {
 
     .final-invitation {
-
+        top: 84%;
         width: 60%;
     }
 
@@ -5117,7 +5120,22 @@ and
         font-size: 8px;
         margin-top: 3px;
     }
-
+    .ganesha-message {
+        margin-top: 2px;
+    }
+    .ganesha-message p{
+        font-size: 7px;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0%;
+    }
+    .royal-divder {
+        top: 21.6%;
+    }
+    .royal-divder b {
+        width: 60%;
+        font-size: 2px;
+    }
     .family-block > p:last-child {
 
         font-size: 6.5px;
@@ -5132,15 +5150,35 @@ and
 
         font-size: 10px;
     }
+    .invitation-message {
+
+        width: 100%;
+        margin-top: 12px;
+    }
 
     .invitation-message p {
 
-        font-size: 6px;
-        margin-top: 1px;
+        font-size: 7px;
+        line-height: 1.2;
+    }
+    
+    .final-divider {
+
+        width: 60%;
+
+        gap: 2px;
+
+        margin-top: -28px;
     }
     .final-divider b{
         font-size: 8px;
         margin-bottom: 1px;
+    }
+
+    .bottom-divider {
+        margin-top: 4px;
+        margin-bottom: 2px;
+        
     }
     .regards-title h3 {
 
@@ -5165,8 +5203,11 @@ and
     }
 
     .regards-title h3 {
-
-        font-size: 20px;
+        margin-top: 6px;
+        font-size: 18px;
+    }
+    .warm-regards{
+        margin-top: 4px;
     }
 }
 
